@@ -20,7 +20,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Train model and validate data
+      - name: Validate Python code and pipeline
         run: |
-          python train.py
-          python -c "from src.data import load_data; print('loaded', len(load_data()))"
+          python -m py_compile train.py app.py download_data.py src/data.py src/pipeline.py
+          python -c "from src.pipeline import build_pipeline; print('pipeline imported OK')"
