@@ -7,8 +7,8 @@ import streamlit as st
 
 from src.data import load_data
 
-MODEL_PATH = Path("models") / "sentiment_model.joblib"
-DATA_PATH = Path("data") / "IMDB Dataset.csv"
+MODEL_PATH = Path(__file__).resolve().parent / "models" / "sentiment_model.joblib"
+DATA_PATH = Path(__file__).resolve().parent / "data" / "IMDB Dataset.csv"
 
 @st.cache_resource
 def load_model(path: Path):
@@ -41,7 +41,7 @@ def random_review_sample() -> str:
     return random.choice(fallback)
 
 st.set_page_config(page_title="IMDB Sentiment Analyzer", page_icon="🎬")
-st.title("IMDB Sentiment Sentiment Analyzer")
+st.title("IMDB Sentiment Analyzer")
 st.write(
     "Enter a movie review and the model will predict whether it is positive or negative."
 )
