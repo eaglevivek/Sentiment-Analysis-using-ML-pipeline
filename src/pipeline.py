@@ -21,7 +21,7 @@ def build_pipeline() -> Pipeline:
                 TfidfVectorizer(
                     stop_words="english",
                     max_df=0.95,
-                    min_df=5,
+                    min_df=1,
                     ngram_range=(1, 2),
                 ),
             ),
